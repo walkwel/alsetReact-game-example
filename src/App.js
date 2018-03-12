@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import ALSET_Game from './modules/ALSET-game/index.jsx';
+import ALSET_ReactGame from './modules/ALSET-Game/index.jsx';
 
 
 class App extends Component {
@@ -26,9 +26,7 @@ class App extends Component {
   render() {
     return (
       <div style={{ height: '100vh', width: '100%' }}>
-        <ALSET_Game key={0} gameId={0} onScoreUpdate={(playerScores)=>this.onScoreUpdate(playerScores)} 
-        onWin={(winner)=>this.onWin(winner)}
-        onPlay = {(playEvent)=>this.onPlay(playEvent)} onPause = {(playEvent)=>this.onPause(playEvent)}/>
+        <ALSET_ReactGame />
       </div>
     );
   }

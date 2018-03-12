@@ -3,6 +3,7 @@ import React, { Component } from 'react';
 import { Loop, Stage, World, KeyListener } from 'react-game-kit';
 import Matter from 'matter-js';
 import { observer } from 'mobx-react';
+import config from './config'
 
 // components
 import Background from './components/background.jsx';
@@ -135,4 +136,9 @@ class Game extends Component {
     GameStore.createNewStones();
   }
 }
+Game.defaultProps={
+  gameId : config.gameId
+}
+
+
 export default observer(Game);
