@@ -4,10 +4,11 @@ import { observer } from 'mobx-react';
 import Matter from 'matter-js';
 
 import { Body, Sprite } from 'react-game-kit/lib';
-import character1 from '../assets/character-blonde.png'
+import character2 from '../assets/character-brunette.png';
 
- class Character extends Component {
+ class Bot2 extends Component {
   static propTypes = {
+    keys: PropTypes.object,
     store: PropTypes.object,
     index: PropTypes.number,
   };
@@ -19,9 +20,10 @@ import character1 from '../assets/character-blonde.png'
 
   constructor(props) {
     super(props);
+    this.isLeaving = false;
 
     this.state = {
-      characterState: 5,
+      characterState: 4,
     };
 
     this.update = this.update.bind(this);
@@ -39,6 +41,7 @@ import character1 from '../assets/character-blonde.png'
     const { characterPosition, stageX, stageY } = this.props.store;
     const { scale } = this.context;
     const { x, y } = characterPosition[this.props.index];
+
     const targetX = x + stageX[this.props.index];
     const targetY = y + stageY[this.props.index];
 
@@ -52,19 +55,19 @@ import character1 from '../assets/character-blonde.png'
   }
 
   update() {
-    const { store, index, player } = this.props;
-    const { body } = this.body;
-    let characterState = 4;
+    const {store, index, player} = this.props;
+    const {body} = this.body;
+      let characterState = 4;
 
-    if (store.game) {
-      if(player) {
-      player(store, index, body)
+      if (store.game) {
+        if(player) {
+          player(store, index, body)
+        }
+        this.setState({
+          characterState: store.characterState[index],
+          repeat: characterState < 5,
+        });
       }
-    }
-    this.setState({
-      characterState: store.characterState[index],
-      repeat: characterState < 5,
-    });
   };
 
   render() {
@@ -72,24 +75,26 @@ import character1 from '../assets/character-blonde.png'
     const y = this.props.store.characterPosition[this.props.index].y;
 
     return (
-      <div id={this.props.mode + '-player1'} style={this.getWrapperStyles()}>
-        <Body
-          args={[x, y, 64, 64]}
-          inertia={Infinity}
-          ref={b => {
-            this.body = b;
-          }}
-        >
-          <Sprite
-            src={character1}
-            scale={this.context.scale*2}
-            state={this.state.characterState}
-            steps={[6, 6, 6, 6, 7, 7, 7, 7, 8, 8, 8, 8, 5, 5, 5, 5, 12, 12, 12, 12, 5]}
-          />
-        </Body>
-      </div>
+        <div id={this.props.mode + '-player2'} style={this.getWrapperStyles()}>
+          <Body
+              args={[x, y, 64, 64]}
+              inertia={Infinity}
+              ref={b => {
+                this.body = b;
+              }}
+          >
+            <Sprite
+                repeat={this.state.repeat}
+                onPlayStateChanged={this.handlePlayStateChanged}
+                src={character2}
+                scale={this.context.scale*2}
+                state={this.state.characterState}
+                steps={[6, 6, 6, 6, 7, 7, 7, 7, 8, 8, 8, 8, 5, 5, 5, 5, 12, 12, 12, 12, 5]}
+            />
+          </Body>
+        </div>
     );
   }
- 
+
 }
-export default observer(Character)
+export default observer(Bot2)

@@ -1,18 +1,18 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import Example1 from '../examples/example1'
+import Example3 from '../examples/example3'
 
-
-class AppExample1 extends Component {
+class AppExample3 extends Component {
   constructor(){
     super()
   }
+  
   render() {
     return (
-        <Example1 />
+        <Example3 />
     );
   }
 }
 
 
-export default AppExample1;
+export default AppExample3;

@@ -1,6 +1,5 @@
 import React from 'react';
-import { extendObservable } from 'mobx';
-import { observable, computed } from 'mobx';
+import { observable, extendObservable, computed } from 'mobx';
 import { observer } from 'mobx-react';
 
 class GameStore {
@@ -13,7 +12,7 @@ class GameStore {
       timeStampData: Date.now(),
       score: [0, 0],
       mode: 'play',
-      config: { speed: 10, minGems: 5, maxGems: 8, gatherToWin: 5 },
+      config: { speed: 10, minGems: 5, maxGems: 8, gatherToWin: 20 },
     });
   }
 

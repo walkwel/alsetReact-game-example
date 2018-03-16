@@ -1,0 +1,16 @@
+{
+    "gameId" : 0,
+    "player1": {
+             "left" : 65,
+             "right" : 68,
+             "up" : 87,
+             "down" : 83
+        },
+    "player2": {
+             "left" : 70,
+             "right" : 72,
+             "up" :   84,
+             "down" : 71
+            }
+    
+}

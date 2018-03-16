@@ -13,6 +13,11 @@ const App = () => (
           <p>Example2 </p>
         </li>
       </Link>
+      <Link to = "/example3" target = '_blank'>
+        <li>
+          <p>Example3 </p>
+        </li>
+      </Link>
       
     </ul>
   </div>

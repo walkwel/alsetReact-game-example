@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import Example2 from '../examples/example2'
 
 
-class App2 extends Component {
+class AppExample2 extends Component {
   constructor(){
     super()
   }
@@ -15,4 +15,4 @@ class App2 extends Component {
 }
 
 
-export default App2;
+export default AppExample2;
